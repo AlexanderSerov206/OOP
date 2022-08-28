@@ -2,6 +2,7 @@
 {
     enum AccountType
     {
+        None,
         Savings,
         Deposit,
         Card
