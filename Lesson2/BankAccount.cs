@@ -39,5 +39,20 @@ namespace Lesson2
         {
             return ++AccountsCounter;
         }
+
+        public void Replenish(decimal value)
+        {
+            AccountBalance += value;
+        }
+
+        public bool Withdraw(decimal value)
+        {
+            if (AccountBalance < value)            
+                return false;
+
+            AccountBalance -= value;
+
+            return true;
+        }
     }
 }

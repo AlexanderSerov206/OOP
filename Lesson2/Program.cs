@@ -4,19 +4,29 @@
     {
         static void Main(string[] args)
         {
-            List<BankAccount> accounts = new List<BankAccount>();
-            accounts.Add(new BankAccount());
-            accounts.Add(new BankAccount(AccountType.Card));
-            accounts.Add(new BankAccount(103.4m));
-            accounts.Add(new BankAccount(500.32m, AccountType.Deposit));
+            BankAccount account = new BankAccount(500m, AccountType.Deposit);
 
-            foreach (BankAccount account in accounts)
-            {
-                Console.WriteLine($"Данные о счёте: \n\rТип: {account.AccountType} \n\rНомер: {account.AccountNumber} \n\rБаланс: {account.AccountBalance}");
-                Console.WriteLine("");
-            }            
+            ShowAccountInfo(account);
+            Console.WriteLine("Попытка снять 300 с баланса.");
+            account.Withdraw(300);
+
+            ShowAccountInfo(account);
+            Console.WriteLine("Попытка снять 500 с баланса.");
+            account.Withdraw(500);
+
+            ShowAccountInfo(account);
+            Console.WriteLine("Добавление 500 на баланс.");
+            account.Replenish(500);
+
+            ShowAccountInfo(account);
 
             Console.ReadKey(true);
+        }
+
+        private static void ShowAccountInfo(BankAccount account)
+        {
+            Console.WriteLine($"Данные о счёте: \n\rТип: {account.AccountType} \n\rНомер: {account.AccountNumber} \n\rБаланс: {account.AccountBalance}");
+            Console.WriteLine("");
         }
     }
 }
