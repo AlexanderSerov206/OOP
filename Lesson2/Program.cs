@@ -12,7 +12,7 @@
 
             foreach (BankAccount account in accounts)
             {
-                Console.WriteLine($"Данные о счёте: \n\rТип: {account.GetAccountType()} \n\rНомер: {account.GetAccountNumber()} \n\rБаланс: {account.GetAccountBalance()}");
+                Console.WriteLine($"Данные о счёте: \n\rТип: {account.AccountType} \n\rНомер: {account.AccountNumber} \n\rБаланс: {account.AccountBalance}");
                 Console.WriteLine("");
             }            
 

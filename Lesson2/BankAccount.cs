@@ -8,53 +8,36 @@ namespace Lesson2
 {
     internal class BankAccount
     {
-        private int accountNumber;
-        private decimal accountBalance = 0;
-        private AccountType accountType = AccountType.None;
-        private static int accountsCounter = 0;
+        public int AccountNumber { get; init; } = GetUniqueNumber();
+        public decimal AccountBalance { get; set; } = 0;
+        public AccountType AccountType { get; set; } = AccountType.None;
+        private static int AccountsCounter { get; set; } = 0;
 
         public BankAccount()
         {
-            accountNumber = GetUniqueNumber();
+
         }
 
         public BankAccount(AccountType accountType)
         {
-            accountNumber = GetUniqueNumber();
-            this.accountType = accountType;
+            AccountType = accountType;
         }
 
         public BankAccount(decimal accountBalance)
         {
-            accountNumber = GetUniqueNumber();
-            this.accountBalance = accountBalance;
+            AccountBalance = accountBalance;
         }
 
         public BankAccount(decimal accountBalance, AccountType accountType)
         {
-            accountNumber = GetUniqueNumber();
-            this.accountBalance = accountBalance;
-            this.accountType = accountType;
+            AccountNumber = GetUniqueNumber();
+            AccountBalance = accountBalance;
+            AccountType = accountType;
         }
 
         private static int GetUniqueNumber()
         {
-            return ++accountsCounter;
-        }
-
-        public int GetAccountNumber()
-        {
-            return accountNumber;
-        }
-
-        public decimal GetAccountBalance()
-        {
-            return accountBalance;
-        }
-
-        public AccountType GetAccountType()
-        {
-            return accountType;
+            return ++AccountsCounter;
         }
     }
 }
