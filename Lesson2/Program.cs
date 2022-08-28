@@ -4,12 +4,20 @@
     {
         static void Main(string[] args)
         {
-            BankAccount account = new BankAccount();
-            account.SetAccountNumber(1);
-            account.SetAccountBalance(100.25m);
-            account.SetAccountType(AccountType.Deposit);
+            Random random = new Random();
 
-            Console.Write($"Данные о счёте: \n\rТип: {account.GetAccountType()} \n\rНомер: {account.GetAccountNumber()} \n\rБаланс: {account.GetAccountBalance()}");
+            for (int i = 0; i < 5; i++)
+            {
+                Array accountTypes = Enum.GetValues(typeof(AccountType));
+                BankAccount account = new BankAccount();
+
+                account.SetAccountBalance(Convert.ToDecimal(random.NextDouble()));
+                account.SetAccountType((AccountType)accountTypes.GetValue(random.Next(accountTypes.Length)));
+
+                Console.WriteLine($"Данные о счёте: \n\rТип: {account.GetAccountType()} \n\rНомер: {account.GetAccountNumber()} \n\rБаланс: {account.GetAccountBalance()}");
+                Console.WriteLine("");
+            }
+
             Console.ReadKey(true);
         }
     }

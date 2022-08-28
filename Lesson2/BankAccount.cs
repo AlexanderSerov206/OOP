@@ -8,13 +8,14 @@ namespace Lesson2
 {
     internal class BankAccount
     {
-        private int accountNumber;
+        private int accountNumber = GetUniqueNumber();
         private decimal accountBalance;
         private AccountType accountType;
+        private static int accountsCounter = 0;
 
-        public void SetAccountNumber(int number)
+        private static int GetUniqueNumber()
         {
-            accountNumber = number;
+            return ++accountsCounter;
         }
 
         public int GetAccountNumber()
