@@ -54,5 +54,14 @@ namespace Lesson2
 
             return true;
         }
+
+        public bool Transfer(BankAccount accountToWithdraw, decimal value)
+        {
+            if (!accountToWithdraw.Withdraw(value))
+                return false;
+
+            AccountBalance += value;
+            return true;
+        }
     }
 }
