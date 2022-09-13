@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Lesson2
 {
-    internal class BankAccount
+    public class BankAccount
     {
         public int AccountNumber { get; init; } = GetUniqueNumber();
         public decimal AccountBalance { get; set; } = 0;
@@ -62,6 +63,39 @@ namespace Lesson2
 
             AccountBalance += value;
             return true;
+        }
+
+        public static bool operator ==(BankAccount firstAcc, BankAccount secondAcc)
+        {
+            return firstAcc.Equals(secondAcc);
+        }
+
+        public static bool operator !=(BankAccount firstAcc, BankAccount secondAcc)
+        {
+            return !firstAcc.Equals(secondAcc);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is not BankAccount || obj == null)
+                return false;
+
+            BankAccount otherAccount = obj as BankAccount;
+
+            if (otherAccount.GetHashCode() == this.GetHashCode())            
+                return true;
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"number:{AccountNumber}, type:{AccountType}, balance:{AccountBalance}.";
         }
     }
 }

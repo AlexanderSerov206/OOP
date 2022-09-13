@@ -1,6 +1,6 @@
 ﻿namespace Lesson2
 {
-    enum AccountType
+    public enum AccountType
     {
         None,
         Savings,
